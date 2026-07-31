@@ -6,7 +6,7 @@
   z-index: 99999;
   will-change: transform, opacity;
   opacity: 0;
-  animation: floatHeart 3.8s cubic-bezier(0.01,0.8, 0.3, 1) forwards;
+  animation: floatHeart 3.8s cubic-bezier(0.01,0.8, 0.3, 0.1) forwards;
 }
 
 @keyframes floatHeart {
