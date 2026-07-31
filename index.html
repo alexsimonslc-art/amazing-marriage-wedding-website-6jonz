@@ -31,20 +31,76 @@
 </header>
 <main>
 <div class="scene-pin" style="--pin:1.5">
-<section class="hero sc-hold sc-zoom sc-depth" data-hero data-media data-lightfall data-scene data-pin>
-<div class="ms-media ms-g-warm" data-ms-video>
-    <img class="ms-poster" src="https://motion.galsol.in/v1/wedding-05.webp" alt="Julian & Genevieve Wedding Backdrop" decoding="async">
-    <video class="ms-vid" autoplay muted playsinline loop preload="auto" tabindex="-1" aria-hidden="true"
-      src="https://motion.galsol.in/v1/wedding-05.mp4" data-mp4="https://motion.galsol.in/v1/wedding-05.mp4"></video>
+<section class="hero sc-hold" data-hero data-media data-sparkles data-scene id="hero-wedding">
+  <!-- Soft, romantic ivory-tinted scrim that guarantees premium readability for elegant dark text -->
+  <div class="ms-media ms-g-warm" data-ms-video style="z-index: 1;">
+    <img id="hero-poster" class="ms-poster" src="https://motion.galsol.in/v1/wedding-05.webp" alt="Julian & Genevieve Wedding Backdrop" decoding="async" style="z-index: 2; transition: opacity 0.8s ease;">
+    <video id="hero-video" class="ms-vid" autoplay muted playsinline loop preload="auto" tabindex="-1" aria-hidden="true" style="z-index: 3; opacity: 0; transition: opacity 0.8s ease;">
+      <source src="https://motion.galsol.in/v1/wedding-05.mp4" type="video/mp4">
+    </video>
   </div>
-  <div class="ms-scrim ms-scrim-medium"></div>
-  <div class="hero-bg" data-bg></div>
-  <div class="hero-inner">
-    <span class="hero-badge reveal">September 12, 2026 • Provence, France</span>
-    <h1 class="hero-title reveal">Julian &amp; Genevieve</h1>
-    <p class="hero-sub reveal">We are getting married! Join us as we begin our greatest adventure yet.</p>
-    <a class="btn btn-lg reveal btn-shine" href="pages/rsvp.html">RSVP Online</a>
+  <div class="ms-scrim" style="background: rgba(247, 244, 230, 0.45); backdrop-filter: blur(2px); z-index: 4; position: absolute; inset: 0;"></div>
+  
+  <div class="hero-inner" style="z-index: 10; position: relative;">
+    <div class="hero-editorial-card reveal">
+      <div class="editorial-border-top"></div>
+      <span class="hero-badge reveal">September 12, 2026 &bull; Provence, France</span>
+      <h1 class="hero-title txt-shiny reveal" style="background-image: linear-gradient(135deg, #1c1712 0%, #6b6155 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">
+        Julian &amp; Genevieve
+      </h1>
+      <div class="editorial-divider"></div>
+      <p class="hero-sub reveal">We are getting married! Join us as we begin our greatest adventure yet under the warm sun of southern France.</p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-lg btn-shine reveal" href="pages/rsvp.html" data-magnetic>RSVP Online</a>
+      </div>
+      <div class="editorial-border-bottom"></div>
+    </div>
   </div>
+
+  <script>
+    // Bulletproof video autoplay & poster fade solution
+    window.addEventListener('DOMContentLoaded', function() {
+      var video = document.getElementById('hero-video');
+      var poster = document.getElementById('hero-poster');
+      
+      if (video) {
+        // Force attributes
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.autoplay = true;
+
+        // Try playing
+        var playPromise = video.play();
+        
+        if (playPromise !== undefined) {
+          playPromise.then(function() {
+            // Video is playing successfully! Fade poster out and show video smoothly
+            video.style.opacity = '1';
+            poster.style.opacity = '0';
+          }).catch(function(error) {
+            console.log("Autoplay was prevented, waiting for user interaction.", error);
+            // Fallback: play on first scroll, click, or touch
+            var playOnInteraction = function() {
+              video.play().then(function() {
+                video.style.opacity = '1';
+                poster.style.opacity = '0';
+                cleanup();
+              });
+            };
+            var cleanup = function() {
+              document.removeEventListener('click', playOnInteraction);
+              document.removeEventListener('touchstart', playOnInteraction);
+              document.removeEventListener('scroll', playOnInteraction);
+            };
+            document.addEventListener('click', playOnInteraction);
+            document.addEventListener('touchstart', playOnInteraction);
+            document.addEventListener('scroll', playOnInteraction);
+          });
+        }
+      }
+    });
+  </script>
 </section>
 </div>
 <section class="section countdown-section" id="countdown">
