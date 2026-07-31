@@ -1,9 +1,152 @@
 {
-  "name": "Amazing Marriage wedding website",
-  "slug": "amazing-marriage-wedding-website-6jonz",
-  "template": "blank",
-  "pages": [
-    "index"
-  ],
-  "version": 1
+  "generator": "ui-library",
+  "version": 1,
+  "style": "glass",
+  "palette": "ivory-editorial",
+  "fonts": "niconne+jakarta",
+  "spec": {
+    "style": "glass",
+    "palette": "ivory-editorial",
+    "fonts": "niconne+jakarta",
+    "event": {
+      "name": "The Wedding of Julian & Genevieve"
+    },
+    "pages": [
+      {
+        "name": "index",
+        "title": "Home",
+        "sections": [
+          {
+            "type": "hero",
+            "scene": "cinematic",
+            "background": {
+              "video": "wedding",
+              "grade": "warm",
+              "scrim": "medium"
+            },
+            "effects": [
+              "data-sparkles",
+              "txt-shiny",
+              "btn-shine"
+            ],
+            "content": {
+              "badge": "September 12, 2026 • Provence, France",
+              "headline": "Julian & Genevieve",
+              "sub": "We are getting married! Join us as we begin our greatest adventure yet.",
+              "ctaText": "RSVP Online",
+              "ctaHref": "pages/rsvp.html",
+              "image": "https://images.pexels.com/photos/22604116/pexels-photo-22604116.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
+            }
+          },
+          {
+            "type": "countdown",
+            "content": {
+              "title": "Counting Down to Forever",
+              "date": "2026-09-12T16:00:00"
+            }
+          },
+          {
+            "type": "about",
+            "effects": [
+              "fx-noise"
+            ],
+            "content": {
+              "title": "Our Story",
+              "body": "From a quiet coffee shop in Paris to endless adventures hand-in-hand, we found our forever home in one another. On this special day, we are overjoyed to pledge our lives together, surrounded by the family and friends who have loved and guided us every step of the way."
+            }
+          },
+          {
+            "type": "schedule",
+            "content": {
+              "title": "The Big Day",
+              "items": [
+                {
+                  "time": "4:00 PM",
+                  "title": "The Ceremony",
+                  "desc": "A quiet, romantic exchange of vows under the ancient oak canopy of Chateau de Tourreau."
+                },
+                {
+                  "time": "5:30 PM",
+                  "title": "Cocktail Hour",
+                  "desc": "Sip sparkling lavender French 75s and enjoy live acoustic jazz on the garden lawn."
+                },
+                {
+                  "time": "7:00 PM",
+                  "title": "Dinner & Toasts",
+                  "desc": "A multi-course seasonal feast featuring regional French cuisine and heartfelt stories."
+                },
+                {
+                  "time": "9:00 PM",
+                  "title": "Dancing & Celebration",
+                  "desc": "Put on your dancing shoes as we dance the night away under the stars."
+                }
+              ]
+            }
+          },
+          {
+            "type": "gallery",
+            "content": {
+              "title": "Captured Moments",
+              "images": [
+                "https://images.pexels.com/photos/954623/pexels-photo-954623.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+                "https://images.pexels.com/photos/20025867/pexels-photo-20025867.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+                "https://images.pexels.com/photos/7081180/pexels-photo-7081180.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+                "https://images.pexels.com/photos/5152571/pexels-photo-5152571.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+                "https://images.pexels.com/photos/38345870/pexels-photo-38345870.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
+                "https://images.pexels.com/photos/15362122/pexels-photo-15362122.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
+              ]
+            }
+          },
+          {
+            "type": "cta",
+            "background": {
+              "video": "bokeh-warm",
+              "grade": "warm",
+              "scrim": "heavy"
+            },
+            "content": {
+              "title": "Will You Join Us?",
+              "sub": "We would be honored to share this unforgettable milestone with you. Please let us know your plans by June 1, 2026.",
+              "ctaText": "Go to RSVP",
+              "ctaHref": "pages/rsvp.html"
+            }
+          }
+        ]
+      },
+      {
+        "name": "rsvp",
+        "title": "RSVP",
+        "sections": [
+          {
+            "type": "hero",
+            "background": {
+              "video": "bokeh-warm",
+              "grade": "warm",
+              "scrim": "medium"
+            },
+            "effects": [
+              "data-sparkles"
+            ],
+            "content": {
+              "badge": "Kindly Reply",
+              "headline": "RSVP to Our Wedding",
+              "sub": "Please fill out the form below to let us know if you can attend. We cannot wait to celebrate with you!",
+              "ctaText": "View Schedule",
+              "ctaHref": "../index.html",
+              "image": "https://images.pexels.com/photos/35120753/pexels-photo-35120753.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
+            }
+          },
+          {
+            "type": "form",
+            "effects": [
+              "fx-noise"
+            ],
+            "content": {
+              "title": "Response Form"
+            }
+          }
+        ]
+      }
+    ]
+  }
 }
