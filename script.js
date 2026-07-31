@@ -66,8 +66,8 @@
       var heart = document.createElement('div');
       heart.className = 'heart-trail-particle';
       
-      // Random smaller sizes: 6px to 14px
-      var sizeNum = Math.floor(Math.random() * 9) + 6;
+      // Random sizes: 14px to 24px
+      var sizeNum = Math.floor(Math.random() * 11) + 14;
       var size = sizeNum + 'px';
       heart.style.width = size;
       heart.style.height = size;
