@@ -6,20 +6,19 @@
   z-index: 99999;
   will-change: transform, opacity;
   opacity: 0;
-  animation: floatHeart 3.8s cubic-bezier(0.01,0.8, 0.3, 1) forwards;
+  animation: floatHeart 3.5s ease-out forwards;
 }
 
 @keyframes floatHeart {
   0% {
-    transform: translate3d(var(--x), var(--y), 0) scale(0.2);
+    transform: translate3d(var(--x), var(--y), 0) scale(0.4);
     opacity: 0;
   }
-  15% {
-    opacity: 0.95;
-    transform: translate3d(calc(var(--x) + var(--sway) * 0.15), calc(var(--y) - 20px), 0) scale(1);
+  10% {
+    opacity: 0.9;
   }
   100% {
-    transform: translate3d(calc(var(--x) + var(--sway)), calc(var(--y) - 160px), 0) scale(0.3);
+    transform: translate3d(calc(var(--x) + var(--sway)), calc(var(--y) - 140px), 0) scale(0.1);
     opacity: 0;
   }
 }

@@ -84,7 +84,7 @@
       document.body.appendChild(heart);
       setTimeout(function() {
         heart.remove();
-      }, 1200); // Cleans up precisely as updated CSS animation finishes
+      }, 3500); // Cleans up precisely as updated CSS animation finishes (3.5s)
     }
   })();
 
