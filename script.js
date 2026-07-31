@@ -6,15 +6,28 @@
       vid.src = vid.getAttribute('data-mp4');
     }
     vid.muted = true;
+    vid.defaultMuted = true;
+    vid.setAttribute('muted', '');
     vid.playsInline = true;
-    var playPromise = vid.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(function() {
-        document.addEventListener('click', function() {
-          vid.play();
-        }, { once: true });
-      });
-    }
+    vid.setAttribute('playsinline', '');
+    
+    var tryPlay = function() {
+      var playPromise = vid.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(function() {
+          var triggerPlay = function() {
+            vid.play();
+            document.removeEventListener('click', triggerPlay);
+            document.removeEventListener('touchstart', triggerPlay);
+          };
+          document.addEventListener('click', triggerPlay);
+          document.addEventListener('touchstart', triggerPlay);
+        });
+      }
+    };
+    
+    tryPlay();
+    vid.addEventListener('loadedmetadata', tryPlay);
   });
 
   // scroll reveal
