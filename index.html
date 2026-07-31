@@ -30,30 +30,32 @@
   <button class="nav-burger" aria-label="Menu" data-burger><span></span><span></span><span></span></button>
 </header>
 <main>
-<div class="scene-pin" style="--pin:1.5">
-<section class="hero sc-hold" data-hero data-media data-sparkles data-scene id="hero-wedding">
-  <!-- Soft, romantic ivory-tinted scrim that guarantees premium readability for elegant dark text -->
-  <div class="ms-media ms-g-warm" data-ms-video style="z-index: 1;">
-    <img id="hero-poster" class="ms-poster" src="https://motion.galsol.in/v1/wedding-05.webp" alt="Julian & Genevieve Wedding Backdrop" decoding="async" style="z-index: 2; transition: opacity 0.8s ease;">
-    <video id="hero-video" class="ms-vid" autoplay muted playsinline loop preload="auto" tabindex="-1" aria-hidden="true" style="z-index: 3; opacity: 0; transition: opacity 0.8s ease;">
-      <source src="https://motion.galsol.in/v1/wedding-05.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="ms-scrim" style="background: rgba(247, 244, 230, 0.45); backdrop-filter: blur(2px); z-index: 4; position: absolute; inset: 0;"></div>
-  
-  <div class="hero-inner" style="z-index: 10; position: relative;">
-    <div class="hero-editorial-card reveal">
-      <div class="editorial-border-top"></div>
-      <span class="hero-badge reveal">September 12, 2026 &bull; Provence, France</span>
-      <h1 class="hero-title txt-shiny reveal" style="background-image: linear-gradient(135deg, #1c1712 0%, #6b6155 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">
-        Julian &amp; Genevieve
-      </h1>
-      <div class="editorial-divider"></div>
-      <p class="hero-sub reveal">We are getting married! Join us as we begin our greatest adventure yet under the warm sun of southern France.</p>
-      <div class="hero-actions reveal">
-        <a class="btn btn-lg btn-shine reveal" href="pages/rsvp.html" data-magnetic>RSVP Online</a>
+<section class="hero hero-split-section" data-hero data-sparkles id="hero-wedding">
+  <div class="hero-bg-accent"></div>
+  <div class="hero-inner">
+    <div class="hero-split-grid">
+      <!-- Left Column: Elegant styled video frame with tilt and shadow -->
+      <div class="hero-left-video reveal" data-tilt>
+        <div class="video-frame-container">
+          <img id="hero-poster" class="hero-split-poster" src="https://motion.galsol.in/v1/wedding-05.webp" alt="Julian & Genevieve Wedding Backdrop" decoding="async">
+          <video id="hero-video" class="hero-split-video" autoplay muted playsinline loop preload="auto" tabindex="-1" aria-hidden="true" style="opacity: 0; transition: opacity 0.8s ease;">
+            <source src="https://motion.galsol.in/v1/wedding-05.mp4" type="video/mp4">
+          </video>
+          <div class="video-overlay-tint"></div>
+        </div>
       </div>
-      <div class="editorial-border-bottom"></div>
+      
+      <!-- Right Column: Editorial romance typography details -->
+      <div class="hero-right-content reveal">
+        <span class="hero-badge">September 12, 2026 &bull; Provence, France</span>
+        <h1 class="hero-title txt-shiny" style="background-image: linear-gradient(135deg, #1c1712 0%, #6b6155 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">
+          Julian &amp; Genevieve
+        </h1>
+        <p class="hero-sub">We are getting married! Join us as we begin our greatest adventure yet under the warm sun of southern France.</p>
+        <div class="hero-actions">
+          <a class="btn btn-lg btn-shine" href="pages/rsvp.html" data-magnetic>RSVP Online</a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -64,23 +66,18 @@
       var poster = document.getElementById('hero-poster');
       
       if (video) {
-        // Force attributes
         video.muted = true;
         video.defaultMuted = true;
         video.playsInline = true;
         video.autoplay = true;
 
-        // Try playing
         var playPromise = video.play();
-        
         if (playPromise !== undefined) {
           playPromise.then(function() {
-            // Video is playing successfully! Fade poster out and show video smoothly
             video.style.opacity = '1';
             poster.style.opacity = '0';
           }).catch(function(error) {
             console.log("Autoplay was prevented, waiting for user interaction.", error);
-            // Fallback: play on first scroll, click, or touch
             var playOnInteraction = function() {
               video.play().then(function() {
                 video.style.opacity = '1';
@@ -102,7 +99,6 @@
     });
   </script>
 </section>
-</div>
 <section class="section countdown-section" id="countdown">
   <div class="section-inner">
     <h2 class="section-title reveal">Counting Down to Forever</h2>

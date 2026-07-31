@@ -49,27 +49,35 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.05;margin
 .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
 .nav-burger span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:.25s}
 
-/* hero — full viewport, gradient-mesh background, cinematic type */
-.hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden}
-.ms-media {position:absolute;inset:0;width:100%;height:100%;overflow:hidden;z-index:1}
-.ms-vid, .ms-poster {position:absolute;top:50%;left:50%;width:100%;height:100%;object-fit:cover;transform:translate(-50%,-50%)}
-.ms-poster {z-index:2}
-.ms-vid {z-index:3}
-.ms-scrim {position:absolute;inset:0;z-index:4;pointer-events:none}
-.ms-scrim-medium {background:rgba(247,244,238,0.35)}
-.ms-scrim-heavy {background:rgba(247,244,238,0.65)}
-.hero-bg{position:absolute;inset:-20%;z-index:0;filter:blur(60px);opacity:.4;
-  background:
-    radial-gradient(40% 40% at 20% 25%,color-mix(in srgb,var(--accent) 70%,transparent),transparent),
-    radial-gradient(45% 45% at 82% 30%,color-mix(in srgb,var(--accent2) 70%,transparent),transparent),
-    radial-gradient(40% 40% at 60% 90%,color-mix(in srgb,var(--accent) 45%,transparent),transparent);
-  animation:heroFloat 16s var(--ease) infinite alternate}
-@keyframes heroFloat{to{transform:translate3d(3%,-3%,0) scale(1.1)}}
-.hero-inner{position:relative;z-index:10;text-align:center;padding-top:80px;padding-bottom:80px;width:100%}
+/* hero — full viewport, split screen layout with video on the left, typography on the right */
+.hero-split-section{position:relative;min-height:85vh;display:flex;align-items:center;overflow:hidden;padding:80px 0;background:var(--bg)}
+.hero-bg-accent{position:absolute;inset:0;background:radial-gradient(circle at 10% 20%, color-mix(in srgb, var(--accent) 8%, transparent) 0%, transparent 50%), radial-gradient(circle at 90% 80%, color-mix(in srgb, var(--accent2) 6%, transparent) 0%, transparent 60%);z-index:1;pointer-events:none}
+.hero-inner{position:relative;z-index:10;width:100%}
+.hero-split-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:center}
+
+/* video column styling */
+.hero-left-video{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/5;box-shadow:var(--shadow);border:1px solid var(--border);background:var(--bg2)}
+.video-frame-container{position:relative;width:100%;height:100%}
+.hero-split-poster, .hero-split-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-split-poster{z-index:2}
+.hero-split-video{z-index:3}
+.video-overlay-tint{position:absolute;inset:0;background:linear-gradient(to top, rgba(28,23,18,0.2) 0%, transparent 60%);z-index:4;pointer-events:none}
+
+/* content column styling */
+.hero-right-content{text-align:left;display:flex;flex-direction:column;align-items:flex-start}
 .hero-badge{display:inline-block;padding:7px 16px;border-radius:999px;background:var(--surface);border:1px solid var(--border);
   backdrop-filter:blur(10px);font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:22px;box-shadow:var(--shadow-sm)}
-.hero-title{font-size:clamp(2.6rem,7vw,5.5rem);letter-spacing:-.02em;margin-bottom:20px;max-width:16ch;margin-inline:auto;color:var(--text)}
-.hero-sub{font-size:clamp(1.05rem,2vw,1.35rem);color:var(--text);max-width:52ch;margin:0 auto 34px;font-weight:500;text-shadow:0 1px 8px rgba(255,255,255,0.8)}
+.hero-title{font-size:clamp(2.6rem,5.5vw,4.5rem);letter-spacing:-.02em;margin-bottom:20px;line-height:1.1;color:var(--text);font-family:var(--font-display)}
+.hero-sub{font-size:clamp(1.05rem,1.8vw,1.25rem);color:var(--muted);max-width:48ch;margin:0 0 34px 0;font-weight:500;line-height:1.6}
+.hero-actions{display:flex;gap:16px;align-items:center}
+
+@media (max-width: 968px) {
+  .hero-split-grid{grid-template-columns:1fr;gap:40px}
+  .hero-left-video{aspect-ratio:1.2/1;max-height:450px}
+  .hero-right-content{text-align:center;align-items:center}
+  .hero-sub{margin-inline:auto}
+  .hero-split-section{padding:40px 0 60px 0}
+}
 
 /* sections */
 .section{padding:96px 0;position:relative}
