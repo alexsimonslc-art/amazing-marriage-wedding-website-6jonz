@@ -2,29 +2,24 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 18px;
-  height: 18px;
   pointer-events: none;
   z-index: 99999;
   will-change: transform, opacity;
   opacity: 0;
-  animation: floatHeart 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation: floatHeart 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
 }
 
 @keyframes floatHeart {
   0% {
-    transform: translate3d(var(--x), var(--y), 0) scale(0.4);
+    transform: translate3d(var(--x), var(--y), 0) scale(0.2);
     opacity: 0;
   }
-  8% {
-    opacity: 0.95;
-    transform: translate3d(var(--x), var(--y), 0) scale(1.1);
-  }
   15% {
-    transform: translate3d(var(--x), var(--y), 0) scale(1);
+    opacity: 0.95;
+    transform: translate3d(calc(var(--x) + var(--sway) * 0.15), calc(var(--y) - 20px), 0) scale(1);
   }
   100% {
-    transform: translate3d(calc(var(--x) + var(--sway)), calc(var(--y) - 140px), 0) scale(0.5);
+    transform: translate3d(calc(var(--x) + var(--sway)), calc(var(--y) - 160px), 0) scale(0.3);
     opacity: 0;
   }
 }

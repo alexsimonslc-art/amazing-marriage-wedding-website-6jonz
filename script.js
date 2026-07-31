@@ -48,7 +48,7 @@
     
     var lastX = 0;
     var lastY = 0;
-    var minDistance = 24; // Min pixels cursor moves before spawning another heart
+    var minDistance = 20; // Slightly more responsive spawning
     
     window.addEventListener('pointermove', function(e) {
       var dx = e.clientX - lastX;
@@ -66,10 +66,16 @@
       var heart = document.createElement('div');
       heart.className = 'heart-trail-particle';
       
-      // Random sway between -35px and +35px
-      var sway = (Math.random() * 70 - 35) + 'px';
-      heart.style.setProperty('--x', (x - 9) + 'px');
-      heart.style.setProperty('--y', (y - 9) + 'px');
+      // Random smaller sizes: 6px to 14px
+      var sizeNum = Math.floor(Math.random() * 9) + 6;
+      var size = sizeNum + 'px';
+      heart.style.width = size;
+      heart.style.height = size;
+      
+      // Random sway between -40px and +40px
+      var sway = (Math.random() * 80 - 40) + 'px';
+      heart.style.setProperty('--x', (x - sizeNum / 2) + 'px');
+      heart.style.setProperty('--y', (y - sizeNum / 2) + 'px');
       heart.style.setProperty('--sway', sway);
       
       // Fluid inline vector heart in romantic deep red
@@ -78,7 +84,7 @@
       document.body.appendChild(heart);
       setTimeout(function() {
         heart.remove();
-      }, 2500); // Cleans up precisely as CSS animation finishes
+      }, 1200); // Cleans up precisely as updated CSS animation finishes
     }
   })();
 
