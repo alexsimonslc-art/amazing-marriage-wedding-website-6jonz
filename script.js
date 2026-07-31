@@ -42,6 +42,46 @@
     a.addEventListener('click',function(){var n=a.closest('[data-nav]');if(n)n.classList.remove('open');});
   });
 
+  // Heart cursor trail effect
+  (function() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    
+    var lastX = 0;
+    var lastY = 0;
+    var minDistance = 24; // Min pixels cursor moves before spawning another heart
+    
+    window.addEventListener('pointermove', function(e) {
+      var dx = e.clientX - lastX;
+      var dy = e.clientY - lastY;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      
+      if (dist > minDistance) {
+        lastX = e.clientX;
+        lastY = e.clientY;
+        createHeart(e.clientX, e.clientY);
+      }
+    }, { passive: true });
+    
+    function createHeart(x, y) {
+      var heart = document.createElement('div');
+      heart.className = 'heart-trail-particle';
+      
+      // Random sway between -35px and +35px
+      var sway = (Math.random() * 70 - 35) + 'px';
+      heart.style.setProperty('--x', (x - 9) + 'px');
+      heart.style.setProperty('--y', (y - 9) + 'px');
+      heart.style.setProperty('--sway', sway);
+      
+      // Fluid inline vector heart in romantic deep red
+      heart.innerHTML = '<svg viewBox="0 0 32 29.6" fill="#e63946" style="width:100%; height:100%; filter: drop-shadow(0 2px 4px rgba(230,57,70,0.35));"><path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/></svg>';
+      
+      document.body.appendChild(heart);
+      setTimeout(function() {
+        heart.remove();
+      }, 2500); // Cleans up precisely as CSS animation finishes
+    }
+  })();
+
   // countdowns
   document.querySelectorAll('[data-countdown]').forEach(function(cd){
     var target=new Date(cd.getAttribute('data-countdown')).getTime();
